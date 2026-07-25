@@ -199,16 +199,18 @@ export default async function Home() {
 
       <Clients />
 
+{/*
       <CaseStudies caseStudies={caseStudies} />
+*/}
 
-      <Testimonial
-        className="mt-24 sm:mt-32 lg:mt-40"
-        client={{ name: 'Phobia', logo: logoPhobiaDark }}
-      >
-        The team at Studio went above and beyond with our onboarding, even
-        finding a way to access the user’s microphone without triggering one of
-        those annoying permission dialogs.
-      </Testimonial>
+      {/*<Testimonial*/}
+      {/*  className="mt-24 sm:mt-32 lg:mt-40"*/}
+      {/*  client={{ name: 'Phobia', logo: logoPhobiaDark }}*/}
+      {/*>*/}
+      {/*  The team at Studio went above and beyond with our onboarding, even*/}
+      {/*  finding a way to access the user’s microphone without triggering one of*/}
+      {/*  those annoying permission dialogs.*/}
+      {/*</Testimonial>*/}
 
       <Services />
 
