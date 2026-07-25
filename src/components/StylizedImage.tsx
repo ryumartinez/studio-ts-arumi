@@ -24,17 +24,22 @@ type ImagePropsWithOptionalAlt = Omit<ImageProps, 'alt'> & { alt?: string }
 
 export function StylizedImage({
   shape = 0,
+  grayscale = true,
   className,
   ...props
-}: ImagePropsWithOptionalAlt & { shape?: 0 | 1 | 2 }) {
+}: ImagePropsWithOptionalAlt & {
+  shape?: 0 | 1 | 2
+  grayscale?: boolean
+}) {
   let id = useId()
   let { width, height, path } = shapes[shape]
 
   return (
     <div
       className={clsx(
+        'relative flex aspect-719/680 w-full',
+        grayscale && 'grayscale',
         className,
-        'relative flex aspect-719/680 w-full grayscale',
       )}
     >
       <svg viewBox={`0 0 ${width} ${height}`} fill="none" className="h-full">

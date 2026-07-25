@@ -9,6 +9,7 @@ export function SectionIntro({
   children,
   smaller = false,
   invert = false,
+  brand = false,
   ...props
 }: Omit<
   React.ComponentPropsWithoutRef<typeof Container>,
@@ -19,6 +20,7 @@ export function SectionIntro({
   children?: React.ReactNode
   smaller?: boolean
   invert?: boolean
+  brand?: boolean
 }) {
   return (
     <Container {...props}>
@@ -29,7 +31,11 @@ export function SectionIntro({
               <span
                 className={clsx(
                   'mb-6 block font-display text-base font-semibold',
-                  invert ? 'text-white' : 'text-neutral-950',
+                  invert
+                    ? 'text-white'
+                    : brand
+                      ? 'text-brand'
+                      : 'text-neutral-950',
                 )}
               >
                 {eyebrow}
@@ -43,7 +49,7 @@ export function SectionIntro({
               smaller
                 ? 'text-2xl font-semibold'
                 : 'text-4xl font-medium sm:text-5xl',
-              invert ? 'text-white' : 'text-neutral-950',
+              invert ? 'text-white' : brand ? 'text-brand' : 'text-neutral-950',
             )}
           >
             {title}
