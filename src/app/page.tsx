@@ -175,7 +175,7 @@ function Services() {
 
 export const metadata: Metadata = {
   description:
-    'We are a development studio working at the intersection of design and technology.',
+    'We are a trusted home repair company dedicated to fixing, maintaining, and improving your living spaces. From minor tweaks to major renovations, our skilled professionals deliver exceptional craftsmanship and reliable service you can trust.',
 }
 
 export default async function Home() {
