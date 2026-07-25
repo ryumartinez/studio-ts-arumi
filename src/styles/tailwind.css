@@ -3,6 +3,9 @@
 @import './typography.css' layer(components);
 
 @theme {
+  --color-brand: #866a9b;
+  --color-brand-dark: #6f577f;
+
   --text-*: initial;
   --text-xs: 0.75rem;
   --text-xs--line-height: 1rem;
