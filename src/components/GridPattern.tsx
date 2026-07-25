@@ -3,6 +3,10 @@
 import { useEffect, useId, useRef, useState } from 'react'
 import { motion } from 'framer-motion'
 
+const brickWidth = 192
+const brickHeight = 96
+const brickGap = 4
+
 function Brick({
   column,
   row,
@@ -11,16 +15,16 @@ function Brick({
   column: number
   row: number
 }) {
-  let rowOffset = Math.abs(row % 2) === 1 ? -48 : 0
+  let rowOffset = Math.abs(row % 2) === 1 ? -brickWidth / 2 : 0
 
   return (
     <motion.rect
-      x="2"
-      y="2"
-      width="92"
-      height="44"
-      rx="2"
-      transform={`translate(${96 * column + rowOffset} ${48 * row})`}
+      x={brickGap}
+      y={brickGap}
+      width={brickWidth - brickGap * 2}
+      height={brickHeight - brickGap * 2}
+      rx={brickGap}
+      transform={`translate(${brickWidth * column + rowOffset} ${brickHeight * row})`}
       {...props}
     />
   )
@@ -42,12 +46,12 @@ export function GridPattern({
     Array<[x: number, y: number, key: number]>
   >([])
   let staticBlocks = [
-    [1, 2],
-    [2, 6],
-    [4, 9],
-    [6, 4],
-    [7, 13],
-    [5, 17],
+    [1, 1],
+    [-2, 3],
+    [2, 5],
+    [-3, 2],
+    [3, 7],
+    [-1, 9],
   ]
 
   useEffect(() => {
@@ -69,10 +73,10 @@ export function GridPattern({
 
       x = x - rect.width / 2
       y = y - yOffset
-      y = Math.floor(y / 48)
+      y = Math.floor(y / brickHeight)
 
-      let rowOffset = Math.abs(y % 2) === 1 ? -48 : 0
-      x = Math.floor((x - rowOffset) / 96)
+      let rowOffset = Math.abs(y % 2) === 1 ? -brickWidth / 2 : 0
+      x = Math.floor((x - rowOffset) / brickWidth)
 
       if (currentBlock.current?.[0] === x && currentBlock.current?.[1] === y) {
         return
@@ -108,14 +112,9 @@ export function GridPattern({
             key={block[2]}
             column={block[0]}
             row={block[1]}
-            className="fill-brand"
             initial={{ opacity: 0 }}
-            animate={{ opacity: [0, 0.18, 0] }}
-            transition={{
-              duration: 1.5,
-              times: [0, 0.12, 1],
-              ease: 'easeOut',
-            }}
+            animate={{ opacity: [0, 1, 0] }}
+            transition={{ duration: 1, times: [0, 0, 1] }}
             onAnimationComplete={() => {
               setHoveredBlocks((blocks) =>
                 blocks.filter((b) => b[2] !== block[2]),
@@ -127,14 +126,16 @@ export function GridPattern({
       <defs>
         <pattern
           id={id}
-          width="192"
-          height="96"
+          width={brickWidth * 2}
+          height={brickHeight * 2}
           x="50%"
           patternUnits="userSpaceOnUse"
           patternTransform={`translate(0 ${yOffset})`}
           fill="none"
         >
-          <path d="M0 0H192M0 48H192M0 96H192M0 0V48M96 0V48M192 0V48M48 48V96M144 48V96" />
+          <path
+            d={`M0 0H${brickWidth * 2}M0 ${brickHeight}H${brickWidth * 2}M0 ${brickHeight * 2}H${brickWidth * 2}M0 0V${brickHeight}M${brickWidth} 0V${brickHeight}M${brickWidth * 2} 0V${brickHeight}M${brickWidth / 2} ${brickHeight}V${brickHeight * 2}M${brickWidth * 1.5} ${brickHeight}V${brickHeight * 2}`}
+          />
         </pattern>
       </defs>
     </svg>
