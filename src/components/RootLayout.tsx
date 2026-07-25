@@ -70,12 +70,12 @@ function Header({
           onMouseLeave={() => setLogoHovered(false)}
         >
           <Logomark
-            className="h-12 sm:hidden"
+            className="h-16 sm:hidden"
             invert={invert}
             filled={logoHovered}
           />
           <Logo
-            className="hidden h-12 sm:block"
+            className="hidden h-16 sm:block"
             invert={invert}
             filled={logoHovered}
           />
