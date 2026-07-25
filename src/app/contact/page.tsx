@@ -28,7 +28,7 @@ function TextInput({
       />
       <label
         htmlFor={id}
-        className="pointer-events-none absolute top-1/2 left-6 -mt-3 origin-left text-base/6 text-neutral-500 transition-all duration-200 peer-not-placeholder-shown:-translate-y-4 peer-not-placeholder-shown:scale-75 peer-not-placeholder-shown:font-semibold peer-not-placeholder-shown:text-neutral-950 peer-focus:-translate-y-4 peer-focus:scale-75 peer-focus:font-semibold peer-focus:text-neutral-950"
+        className="pointer-events-none absolute top-1/2 left-6 -mt-3 origin-left text-base/6 text-neutral-500 transition-all duration-200 peer-not-placeholder-shown:-translate-y-4 peer-not-placeholder-shown:scale-75 peer-not-placeholder-shown:font-semibold peer-not-placeholder-shown:text-brand peer-focus:-translate-y-4 peer-focus:scale-75 peer-focus:font-semibold peer-focus:text-brand"
       >
         {label}
       </label>
@@ -56,7 +56,7 @@ function ContactForm() {
   return (
     <FadeIn className="lg:order-last">
       <form>
-        <h2 className="font-display text-base font-semibold text-neutral-950">
+        <h2 className="font-display text-base font-semibold text-brand">
           Work inquiries
         </h2>
         <div className="isolate mt-6 -space-y-px rounded-2xl bg-white/50">
@@ -97,7 +97,7 @@ function ContactForm() {
 function ContactDetails() {
   return (
     <FadeIn>
-      <h2 className="font-display text-base font-semibold text-neutral-950">
+      <h2 className="font-display text-base font-semibold text-brand">
         Our offices
       </h2>
       <p className="mt-6 text-base text-neutral-600">
@@ -108,7 +108,7 @@ function ContactDetails() {
       <Offices className="mt-10 grid grid-cols-1 gap-8 sm:grid-cols-2" />
 
       <Border className="mt-16 pt-16">
-        <h2 className="font-display text-base font-semibold text-neutral-950">
+        <h2 className="font-display text-base font-semibold text-brand">
           Email us
         </h2>
         <dl className="mt-6 grid grid-cols-1 gap-8 text-sm sm:grid-cols-2">
@@ -117,7 +117,7 @@ function ContactDetails() {
             ['Press', 'press@studioagency.com'],
           ].map(([label, email]) => (
             <div key={email}>
-              <dt className="font-semibold text-neutral-950">{label}</dt>
+              <dt className="font-semibold text-brand">{label}</dt>
               <dd>
                 <Link
                   href={`mailto:${email}`}
@@ -132,7 +132,7 @@ function ContactDetails() {
       </Border>
 
       <Border className="mt-16 pt-16">
-        <h2 className="font-display text-base font-semibold text-neutral-950">
+        <h2 className="font-display text-base font-semibold text-brand">
           Follow us
         </h2>
         <SocialMedia className="mt-6" />
