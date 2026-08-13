@@ -20,6 +20,7 @@ import { GridPattern } from '@/components/GridPattern'
 import { Logo, Logomark } from '@/components/Logo'
 import { Offices } from '@/components/Offices'
 import { SocialMedia } from '@/components/SocialMedia'
+import { featureFlags } from '@/lib/featureFlags'
 
 const RootLayoutContext = createContext<{
   logoHovered: boolean
@@ -81,9 +82,11 @@ function Header({
           />
         </Link>
         <div className="flex items-center gap-x-8">
-          <Button href="/contact" invert={invert}>
-            Contact us
-          </Button>
+          {featureFlags.contact && (
+            <Button href="/contact" invert={invert}>
+              Contact us
+            </Button>
+          )}
           <button
             ref={toggleRef}
             type="button"
@@ -142,14 +145,26 @@ function NavigationItem({
 function Navigation() {
   return (
     <nav className="mt-px font-display text-5xl font-medium tracking-tight text-white">
-      <NavigationRow>
-        {/* <NavigationItem href="/work">Our Work</NavigationItem> */}
-        <NavigationItem href="/about">About Us</NavigationItem>
-      </NavigationRow>
-      {/* <NavigationRow>
-        <NavigationItem href="/process">Our Process</NavigationItem>
-        <NavigationItem href="/blog">Blog</NavigationItem>
-      </NavigationRow> */}
+      {(featureFlags.work || featureFlags.about) && (
+        <NavigationRow>
+          {featureFlags.work && (
+            <NavigationItem href="/work">Our Work</NavigationItem>
+          )}
+          {featureFlags.about && (
+            <NavigationItem href="/about">About Us</NavigationItem>
+          )}
+        </NavigationRow>
+      )}
+      {(featureFlags.process || featureFlags.blog) && (
+        <NavigationRow>
+          {featureFlags.process && (
+            <NavigationItem href="/process">Our Process</NavigationItem>
+          )}
+          {featureFlags.blog && (
+            <NavigationItem href="/blog">Blog</NavigationItem>
+          )}
+        </NavigationRow>
+      )}
     </nav>
   )
 }
