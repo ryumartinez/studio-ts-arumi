@@ -4,9 +4,10 @@ import '@/styles/tailwind.css'
 
 export const metadata: Metadata = {
   title: {
-    template: '%s - Studio',
-    default: 'Studio - Award winning developer studio based in Denmark',
+    template: '%s - Arumi',
+    default: 'Arumi',
   },
+  description: 'Home services in Missisipi',
 }
 
 export default function Layout({ children }: { children: React.ReactNode }) {
