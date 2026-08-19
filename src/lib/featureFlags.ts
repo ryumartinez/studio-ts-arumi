@@ -1,7 +1,7 @@
 const isEnabled = (value: string | undefined) => value === 'true'
 
 /**
- * Route-level release flags.
+ * Build-time release flags for routes and optional site content.
  *
  * Flags default to off so unfinished routes cannot be released accidentally.
  * Because these values are also used to hide links in client components, they
@@ -12,7 +12,11 @@ export const featureFlags = {
   about: isEnabled(process.env.NEXT_PUBLIC_FEATURE_ABOUT),
   blog: isEnabled(process.env.NEXT_PUBLIC_FEATURE_BLOG),
   contact: isEnabled(process.env.NEXT_PUBLIC_FEATURE_CONTACT),
+  officeAddress: isEnabled(
+    process.env.NEXT_PUBLIC_FEATURE_OFFICE_ADDRESS,
+  ),
   process: isEnabled(process.env.NEXT_PUBLIC_FEATURE_PROCESS),
+  socialMedia: isEnabled(process.env.NEXT_PUBLIC_FEATURE_SOCIAL_MEDIA),
   work: isEnabled(process.env.NEXT_PUBLIC_FEATURE_WORK),
 } as const
 

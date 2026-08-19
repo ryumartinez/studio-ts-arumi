@@ -20,12 +20,14 @@ const navigation = [
   },
   {
     title: 'Connect',
-    links: [
-      ...socialMediaProfiles.filter(({ title }) => title === 'Facebook'),
-      ...socialMediaProfiles.filter(({ title }) => title === 'Instagram'),
-      // ...socialMediaProfiles.filter(({ title }) => title === 'GitHub'),
-      // ...socialMediaProfiles.filter(({ title }) => title === 'Dribbble'),
-    ],
+    links: featureFlags.socialMedia
+      ? [
+          ...socialMediaProfiles.filter(({ title }) => title === 'Facebook'),
+          ...socialMediaProfiles.filter(({ title }) => title === 'Instagram'),
+          // ...socialMediaProfiles.filter(({ title }) => title === 'GitHub'),
+          // ...socialMediaProfiles.filter(({ title }) => title === 'Dribbble'),
+        ]
+      : [],
   },
 ].filter(({ links }) => links.length > 0)
 

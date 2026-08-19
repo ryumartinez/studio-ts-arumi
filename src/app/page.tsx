@@ -218,7 +218,7 @@ export default async function Home() {
 
       <Services />
 
-      <ContactSection />
+      {/*<ContactSection />*/}
     </RootLayout>
   )
 }

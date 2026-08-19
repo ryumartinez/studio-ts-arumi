@@ -10,6 +10,7 @@ import { Offices } from '@/components/Offices'
 import { PageIntro } from '@/components/PageIntro'
 import { SocialMedia } from '@/components/SocialMedia'
 import { RootLayout } from '@/components/RootLayout'
+import { featureFlags } from '@/lib/featureFlags'
 
 function TextInput({
   label,
@@ -97,15 +98,19 @@ function ContactForm() {
 function ContactDetails() {
   return (
     <FadeIn>
-      <h2 className="font-display text-base font-semibold text-brand">
-        Our offices
-      </h2>
-      <p className="mt-6 text-base text-neutral-600">
-        Prefer doing things in person? We don’t but we have to list our
-        addresses here for legal reasons.
-      </p>
+      {featureFlags.officeAddress && (
+        <>
+          <h2 className="font-display text-base font-semibold text-brand">
+            Our offices
+          </h2>
+          <p className="mt-6 text-base text-neutral-600">
+            Prefer doing things in person? We don’t but we have to list our
+            addresses here for legal reasons.
+          </p>
 
-      <Offices className="mt-10 grid grid-cols-1 gap-8 sm:grid-cols-2" />
+          <Offices className="mt-10 grid grid-cols-1 gap-8 sm:grid-cols-2" />
+        </>
+      )}
 
       <Border className="mt-16 pt-16">
         <h2 className="font-display text-base font-semibold text-brand">
@@ -131,12 +136,14 @@ function ContactDetails() {
         </dl>
       </Border>
 
-      <Border className="mt-16 pt-16">
-        <h2 className="font-display text-base font-semibold text-brand">
-          Follow us
-        </h2>
-        <SocialMedia className="mt-6" />
-      </Border>
+      {featureFlags.socialMedia && (
+        <Border className="mt-16 pt-16">
+          <h2 className="font-display text-base font-semibold text-brand">
+            Follow us
+          </h2>
+          <SocialMedia className="mt-6" />
+        </Border>
+      )}
     </FadeIn>
   )
 }

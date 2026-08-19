@@ -249,27 +249,45 @@ function RootLayoutInner({ children }: { children: React.ReactNode }) {
               />
             </div>
             <Navigation />
-            <div className="relative bg-brand before:absolute before:inset-x-0 before:top-0 before:h-px before:bg-white/15">
-              <Container>
-                <div className="grid grid-cols-1 gap-y-10 pt-10 pb-16 sm:grid-cols-2 sm:pt-16">
-                  <div>
-                    <h2 className="font-display text-base font-semibold text-white">
-                      Our offices
-                    </h2>
-                    <Offices
-                      invert
-                      className="mt-6 grid grid-cols-1 gap-8 sm:grid-cols-2"
-                    />
+            {(featureFlags.officeAddress || featureFlags.socialMedia) && (
+              <div className="relative bg-brand before:absolute before:inset-x-0 before:top-0 before:h-px before:bg-white/15">
+                <Container>
+                  <div
+                    className={clsx(
+                      'grid grid-cols-1 gap-y-10 pt-10 pb-16 sm:pt-16',
+                      featureFlags.officeAddress &&
+                        featureFlags.socialMedia &&
+                        'sm:grid-cols-2',
+                    )}
+                  >
+                    {featureFlags.officeAddress && (
+                      <div>
+                        <h2 className="font-display text-base font-semibold text-white">
+                          Our offices
+                        </h2>
+                        <Offices
+                          invert
+                          className="mt-6 grid grid-cols-1 gap-8 sm:grid-cols-2"
+                        />
+                      </div>
+                    )}
+                    {featureFlags.socialMedia && (
+                      <div
+                        className={clsx(
+                          featureFlags.officeAddress &&
+                            'sm:border-l sm:border-transparent sm:pl-16',
+                        )}
+                      >
+                        <h2 className="font-display text-base font-semibold text-white">
+                          Follow us
+                        </h2>
+                        <SocialMedia className="mt-6" invert />
+                      </div>
+                    )}
                   </div>
-                  <div className="sm:border-l sm:border-transparent sm:pl-16">
-                    <h2 className="font-display text-base font-semibold text-white">
-                      Follow us
-                    </h2>
-                    <SocialMedia className="mt-6" invert />
-                  </div>
-                </div>
-              </Container>
-            </div>
+                </Container>
+              </div>
+            )}
           </motion.div>
         </motion.div>
       </header>

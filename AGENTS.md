@@ -21,8 +21,9 @@ This project started from the Studio template by Tailwind Plus and is being upda
 
 ## Feature Flags
 
-- Route flags are defined in `src/lib/featureFlags.ts` and use build-time `NEXT_PUBLIC_FEATURE_*` variables.
+- Feature flags are defined in `src/lib/featureFlags.ts` and use build-time `NEXT_PUBLIC_FEATURE_*` variables.
 - Only the home route is enabled by default. A flag is enabled only when its value is exactly `true`.
+- Office addresses and social media are independently controlled by `NEXT_PUBLIC_FEATURE_OFFICE_ADDRESS` and `NEXT_PUBLIC_FEATURE_SOCIAL_MEDIA`.
 - When adding a public route, update the route map, `.env.example`, and relevant navigation surfaces.
 - Do not expose links to disabled routes. Preserve the fail-closed behavior unless the task explicitly changes it.
 

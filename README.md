@@ -20,10 +20,11 @@ Finally, open [http://localhost:3000](http://localhost:3000) in your browser to 
 
 ## Feature flags
 
-Only the home route is enabled by default. Other routes are controlled by the
-`NEXT_PUBLIC_FEATURE_*` variables documented in `.env.example`. Copy that file
-to `.env.local`, set a route's flag to `true`, and rebuild the app to release
-that route and show its navigation links.
+All optional features are controlled by the `NEXT_PUBLIC_FEATURE_*` variables
+documented in `.env.example`. Copy that file to `.env.local`, set a feature's
+flag to `true`, and rebuild the app to release it. Only the home route is
+enabled by default. Office addresses and social media links also remain hidden
+until their respective flags are enabled.
 
 Routes that are not enabled redirect to the home page. New routes are disabled
 until they are added to the route map in `src/lib/featureFlags.ts`.
