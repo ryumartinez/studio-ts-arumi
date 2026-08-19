@@ -119,7 +119,7 @@ export function Footer() {
             <Logo className="h-16" fillOnHover />
           </Link>
           <p className="text-sm text-neutral-700">
-            © Studio Agency Inc. {new Date().getFullYear()}
+            © Arumi Home Services {new Date().getFullYear()}
           </p>
         </div>
       </FadeIn>

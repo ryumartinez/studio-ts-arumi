@@ -4,8 +4,8 @@ import '@/styles/tailwind.css'
 
 export const metadata: Metadata = {
   title: {
-    template: '%s - Arumi',
-    default: 'Arumi',
+    template: '%s - Arumi Home Services',
+    default: 'Arumi Home Services',
   },
   description: 'Home services in Missisipi',
 }
