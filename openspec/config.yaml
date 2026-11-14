@@ -1,0 +1,38 @@
+schema: spec-driven
+
+context: |
+  Follow AGENTS.md at the repo root; it is authoritative for content, styling, feature flags, and verification.
+  Never invent business details (addresses, phone numbers, emails, service areas, hours, testimonials, pricing, social URLs); list them as open questions in the proposal instead.
+  New public routes must be behind a NEXT_PUBLIC_FEATURE_* flag (fail-closed) and update the route map, .env.example, and navigation.
+  There is no automated test suite; tasks must end with `npm run lint` (and `npm run build` for routing/env/MDX changes) plus stated manual checks.
+
+# Project context (optional)
+# Add only constraints that should guide OpenSpec artifacts and workflows.
+# Include constraints an agent cannot infer by reading the code.
+# Keep general project documentation and discoverable codebase facts out.
+# Example:
+#   context: |
+#     Designs and tasks must cover Windows, macOS, and Linux
+#     Write all artifacts in Spanish
+
+# Per-artifact rules (optional)
+# Add custom rules for specific artifacts.
+# Example:
+#   rules:
+#     proposal:
+#       - Keep proposals under 500 words
+#       - Always state what is out of scope
+#     tasks:
+#       - Break tasks into chunks of max 2 hours
+
+# Per-operation guidance (optional)
+# Add advisory guidance for how apply and archive work should be conducted.
+# This is separate from artifact rules above.
+# Example:
+#   operations:
+#     apply:
+#       guidance:
+#         - Keep test summaries concise
+#     archive:
+#       guidance:
+#         - Summarize the archive outcome before finishing
